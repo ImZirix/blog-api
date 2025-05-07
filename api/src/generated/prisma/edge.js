@@ -171,6 +171,14 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "windows"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [
@@ -198,8 +206,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"../generated/prisma\"\n  previewFeatures = [\"relationJoins\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id           Int       @id @default(autoincrement())\n  username     String    @unique\n  email        String    @unique\n  passwordHash String\n  role         Role      @default(USER)\n  bio          String?   @default(\"Hey! im new here :D\")\n  avatarUrl    String?   @default(\"https://via.placeholder.com/250\")\n  posts        Post[]\n  comments     Comment[]\n}\n\nmodel Post {\n  id        Int       @id @default(autoincrement())\n  title     String\n  body      String\n  published Boolean   @default(false)\n  createdAt DateTime  @default(now())\n  updatedAt DateTime  @updatedAt\n  author    User      @relation(fields: [authorId], references: [id])\n  authorId  Int\n  comments  Comment[]\n}\n\nmodel Comment {\n  id        Int      @id @default(autoincrement())\n  body      String\n  createdAt DateTime @default(now())\n  post      Post     @relation(fields: [postId], references: [id])\n  postId    Int\n  User      User     @relation(fields: [userId], references: [id])\n  userId    Int\n}\n\nenum Role {\n  ADMIN\n  USER\n}\n",
-  "inlineSchemaHash": "2fcea3d78ba9803d3c7213e6d5f7c6af34223e92bf14a4d59d4a9fcff199d612",
+  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"../generated/prisma\"\n  previewFeatures = [\"relationJoins\"]\n  binaryTargets   = [\"native\", \"windows\", \"debian-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id           Int       @id @default(autoincrement())\n  username     String    @unique\n  email        String    @unique\n  passwordHash String\n  role         Role      @default(USER)\n  bio          String?   @default(\"Hey! im new here :D\")\n  avatarUrl    String?   @default(\"https://via.placeholder.com/250\")\n  posts        Post[]\n  comments     Comment[]\n}\n\nmodel Post {\n  id        Int       @id @default(autoincrement())\n  title     String\n  body      String\n  published Boolean   @default(false)\n  createdAt DateTime  @default(now())\n  updatedAt DateTime  @updatedAt\n  author    User      @relation(fields: [authorId], references: [id])\n  authorId  Int\n  comments  Comment[]\n}\n\nmodel Comment {\n  id        Int      @id @default(autoincrement())\n  body      String\n  createdAt DateTime @default(now())\n  post      Post     @relation(fields: [postId], references: [id])\n  postId    Int\n  User      User     @relation(fields: [userId], references: [id])\n  userId    Int\n}\n\nenum Role {\n  ADMIN\n  USER\n}\n",
+  "inlineSchemaHash": "b5170f70155ee501d27059ed0d548140e05a994a1b1dfd38752cb47aea853e53",
   "copyEngine": true
 }
 config.dirname = '/'
