@@ -9,6 +9,7 @@ exports.register = async (req, res) => {
     const user = await prisma.user.create({
       data: { username, email, passwordHash: hashed },
     });
+    const token = createToken(user);
     res.status(201).json({ message: "User created", userId: user.id });
   } catch (err) {
     console.error(err);
