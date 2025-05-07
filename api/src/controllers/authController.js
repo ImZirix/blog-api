@@ -10,7 +10,7 @@ exports.register = async (req, res) => {
       data: { username, email, passwordHash: hashed },
     });
     const token = createToken(user);
-    res.status(201).json({ message: "User created", userId: user.id });
+    res.status(201).json({ message: "User created", userId: user.id, token });
   } catch (err) {
     console.error(err);
     res.status(400).json({ error: "Username may already be taken" });
