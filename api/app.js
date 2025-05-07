@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-app.use(cors({ origin: "https://blog-api-one-delta.vercel.app/" }));
+app.use(cors({ origin: "https://blog-api-one-delta.vercel.app" }));
 app.use(express.json());
 
 //Routes
