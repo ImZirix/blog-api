@@ -21,11 +21,11 @@ function CreatePost() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold mb-5 text-center">
+    <div className="max-w-3xl mt-20 mx-auto p-8 bg-white rounded-lg shadow-lg">
+      <h2 className="text-3xl font-extrabold text-center text-gray-900 mb-8">
         Create a New Post
       </h2>
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <input
             type="text"
@@ -33,7 +33,7 @@ function CreatePost() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
-            className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
           />
         </div>
         <div>
@@ -42,13 +42,13 @@ function CreatePost() {
             value={body}
             onChange={(e) => setBody(e.target.value)}
             required
-            className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent h-32"
+            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent h-40 text-lg"
           />
         </div>
         <div>
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all duration-200"
+            className="w-full py-3 px-5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             Submit Post
           </button>

@@ -11,6 +11,32 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
+exports.getPosts = async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 10;
+  const offset = (page - 1) * limit;
+
+  try {
+    const posts = await prisma.post.findMany({
+      skip: offset,
+      take: limit,
+      orderBy: { createdAt: "desc" },
+      include: {
+        author: true,
+        comments: true,
+      },
+    });
+    const total = await prisma.post.count();
+    res.json({
+      posts,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch posts" });
+  }
+};
+
 exports.getPostById = async (req, res) => {
   const id = parseInt(req.params.id);
   try {

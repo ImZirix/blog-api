@@ -21,14 +21,14 @@ function Navbar() {
           to="/"
           className="text-2xl font-bold text-gray-800 hover:text-gray-900"
         >
-          MyBlog
+          Bonjour 🥐
         </Link>
         <div className="flex gap-4 mt-2 sm:mt-0 text-lg font-medium text-gray-700">
-          <Link to="/" className="hover:text-gray-900">
-            Home
-          </Link>
           {token ? (
             <>
+              <Link to="/" className="hover:text-gray-900">
+                Home
+              </Link>
               <Link to="/create-post" className="hover:text-gray-900">
                 Create
               </Link>
